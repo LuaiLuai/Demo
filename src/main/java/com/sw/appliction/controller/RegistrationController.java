@@ -1,14 +1,29 @@
 package com.sw.appliction.controller;
 
-import org.springframework.stereotype.Controller;
+import com.sw.appliction.model.User;
+import com.sw.appliction.service.RegistrationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class RegistrationController {
 
-    @GetMapping(value = "/registration")
-    public String register(){
-       System.out.println("enter here");
-       return "jkldsfj";
+    @Autowired
+    private RegistrationService registrationService;
+
+    @PostMapping(value = "registration")
+    public void register(@RequestBody User user) {
+        System.out.println("enter here");
+        registrationService.register(user);
     }
+
+    @GetMapping(value = "/re")
+    public void test() {
+        System.out.println("enter here");
+    }
+
+
 }
